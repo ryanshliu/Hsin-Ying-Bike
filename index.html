@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>新鷹銀發車行｜2025-2026 全週期互動圖表下鑽分析</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: #f1f5f9;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    .card-shadow { box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.07); }
+    .chip-active {
+      background-color: #1d4ed8 !important;
+      color: #ffffff !important;
+      border-color: #1d4ed8 !important;
+    }
+    .pulse-hint {
+      animation: pulse-border 2s infinite;
+    }
+    @keyframes pulse-border {
+      0%, 100% { border-color: rgba(59, 130, 246, 0.3); }
+      50% { border-color: rgba(59, 130, 246, 0.9); }
+    }
+  </style>
+</head>
+<body class="text-slate-800 pb-24">
+
+  <!-- 頂部手機固定導覽列 -->
+  <header class="sticky top-0 z-30 bg-gradient-to-r from-slate-900 via-blue-900 to-indigo-950 text-white px-4 pt-3.5 pb-3 shadow-md">
+    <div class="max-w-xl mx-auto flex items-center justify-between">
+      <div>
+        <div class="flex items-center gap-1.5">
+          <span class="bg-amber-400 text-slate-950 text-[11px] font-black px-2 py-0.5 rounded-full">★ 5.0 滿分 (500+則)</span>
+          <span class="text-[11px] text-blue-200 font-medium">2025/03 上線 – 2026/10</span>
+        </div>
+        <h1 class="text-base sm:text-lg font-black tracking-tight mt-1">新鷹銀發車行 全週期視覺化戰情室</h1>
+        <p class="text-[11px] text-blue-200">717 台南市仁德區後壁里中正路二段 339 號</p>
+      </div>
+      <button onclick="copyAllTimeSummary()" class="bg-white/15 hover:bg-white/25 active:scale-95 transition px-3 py-1.5 rounded-xl text-xs font-bold flex flex-col items-center border border-white/20 shrink-0">
+        <span>📋 複製</span>
+        <span class="text-[10px] font-normal text-blue-100">全期總結</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="max-w-xl mx-auto px-3.5 pt-4 space-y-5">
+
+    <!-- 全週期里程碑頂部總覽卡 -->
+    <section id="sec-milestone" class="bg-white rounded-2xl p-4 card-shadow border border-slate-100 space-y-3">
+      <div class="flex items-center justify-between">
+        <div>
+          <span class="text-[11px] font-bold text-blue-700 bg-blue-50 px-2.5 py-0.5 rounded-full">全週期時間跨度：共 20 個月</span>
+          <h2 class="text-sm font-black text-slate-800 mt-1">從數位建檔 (2025/03) 到單月新高 (2026/10)</h2>
+        </div>
+        <div class="text-right">
+          <span class="text-xs text-slate-400">瀏覽量成長倍數</span>
+          <p class="text-lg font-black text-emerald-600">+1,025% 🚀</p>
+        </div>
+      </div>
+
+      <!-- 4格全期累計 KPI -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 pt-1">
+        <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+          <p class="text-[11px] text-slate-500">全期累計總互動</p>
+          <p class="text-xl font-black text-blue-700 mt-0.5">1,415 <span class="text-[10px] font-normal text-slate-500">次</span></p>
+          <p class="text-[10px] text-slate-400">25年583｜26年832</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+          <p class="text-[11px] text-slate-500">全期累計路線導航</p>
+          <p class="text-xl font-black text-emerald-700 mt-0.5">1,154 <span class="text-[10px] font-normal text-slate-500">人</span></p>
+          <p class="text-[10px] text-slate-400">佔全期互動 81.6%</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+          <p class="text-[11px] text-slate-500">全期累計檔案瀏覽</p>
+          <p class="text-xl font-black text-indigo-700 mt-0.5">9,841 <span class="text-[10px] font-normal text-slate-500">次</span></p>
+          <p class="text-[10px] text-slate-400">81次(起) ➔ 911次(峰)</p>
+        </div>
+        <div class="bg-slate-50 rounded-xl p-2.5 border border-slate-100">
+          <p class="text-[11px] text-slate-500">全期累計來電詢問</p>
+          <p class="text-xl font-black text-amber-600 mt-0.5">198 <span class="text-[10px] font-normal text-slate-500">通</span></p>
+          <p class="text-[10px] text-slate-400">25年55｜26年143</p>
+        </div>
+      </div>
+
+      <!-- 區間快速篩選器 -->
+      <div class="flex items-center justify-between bg-slate-100 p-1 rounded-xl text-xs font-bold">
+        <button onclick="setPeriodFilter('ALL', this)" class="period-btn flex-1 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition">
+          全週期 (20個月)
+        </button>
+        <button onclick="setPeriodFilter('2025', this)" class="period-btn flex-1 py-1.5 rounded-lg text-slate-600 transition">
+          2025 建檔成長期
+        </button>
+        <button onclick="setPeriodFilter('2026', this)" class="period-btn flex-1 py-1.5 rounded-lg text-slate-600 transition">
+          2026 爆發成熟期
+        </button>
+      </div>
+    </section>
+
+    <!-- 互動圖表 1：20個月時間軸趨勢圖 + 點擊節點下鑽面板 -->
+    <section id="sec-timeline" class="space-y-3">
+      <div class="flex items-center justify-between px-1">
+        <h2 class="text-sm font-black text-slate-700 flex items-center gap-1.5">
+          <span class="w-2 h-4 bg-blue-600 rounded-full inline-block"></span>
+          全週期逐月趨勢圖（點擊圖上資料點下鑽）
+        </h2>
+        <span class="text-[11px] font-bold text-blue-600 animate-pulse">👆 點擊圖表節點</span>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 card-shadow border border-slate-100 space-y-3">
+        <!-- 指標視角切換 -->
+        <div class="flex gap-1.5 overflow-x-auto no-scrollbar pb-1">
+          <button onclick="switchTimelineMetric('interactions', this)" class="metric-btn chip-active shrink-0 px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 bg-slate-50 text-slate-600 transition">
+            📊 總互動與路線導航
+          </button>
+          <button onclick="switchTimelineMetric('views', this)" class="metric-btn shrink-0 px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 bg-slate-50 text-slate-600 transition">
+            👁️ 檔案瀏覽量爆發曲線
+          </button>
+          <button onclick="switchTimelineMetric('calls', this)" class="metric-btn shrink-0 px-3 py-1.5 rounded-full text-xs font-bold border border-slate-200 bg-slate-50 text-slate-600 transition">
+            📞 來電數與網站造訪
+          </button>
+        </div>
+
+        <!-- 主趨勢圖 Canvas -->
+        <div class="h-60 w-full relative">
+          <canvas id="allTimeTrendChart"></canvas>
+        </div>
+
+        <!-- 點擊圖表後的「單月深度下鑽明細卡 (Drill-down Panel)」 -->
+        <div id="month-drilldown-card" class="bg-gradient-to-br from-blue-50/90 via-indigo-50/60 to-white rounded-xl p-3.5 border-2 border-blue-200 pulse-hint space-y-3">
+          <div class="flex items-center justify-between border-b border-blue-100 pb-2">
+            <div>
+              <span id="dd-phase-tag" class="text-[10px] font-bold px-2 py-0.5 rounded bg-blue-600 text-white">2026 穩健爆發期</span>
+              <h3 id="dd-month-title" class="text-base font-black text-slate-900 mt-1">2026年10月 深度下鑽剖析</h3>
+            </div>
+            <div class="text-right">
+              <p class="text-[11px] text-slate-500">單月總互動</p>
+              <p id="dd-total-interactions" class="text-2xl font-black text-blue-700">95 <span class="text-xs font-bold">次</span></p>
+            </div>
+          </div>
+
+          <!-- 下鑽 4 小格細項 -->
+          <div class="grid grid-cols-4 gap-1.5 text-center">
+            <div class="bg-white p-2 rounded-lg border border-blue-100">
+              <p class="text-[10px] text-slate-400">🧭 路線導航</p>
+              <p id="dd-routes" class="text-sm font-black text-emerald-700 mt-0.5">74</p>
+              <p id="dd-routes-pct" class="text-[10px] text-slate-400">佔 77.9%</p>
+            </div>
+            <div class="bg-white p-2 rounded-lg border border-blue-100">
+              <p class="text-[10px] text-slate-400">📞 來電數</p>
+              <p id="dd-calls" class="text-sm font-black text-amber-600 mt-0.5">16</p>
+              <p id="dd-calls-pct" class="text-[10px] text-slate-400">佔 16.8%</p>
+            </div>
+            <div class="bg-white p-2 rounded-lg border border-blue-100">
+              <p class="text-[10px] text-slate-400">🌐 網站造訪</p>
+              <p id="dd-web" class="text-sm font-black text-indigo-600 mt-0.5">5</p>
+              <p id="dd-web-pct" class="text-[10px] text-slate-400">佔 5.3%</p>
+            </div>
+            <div class="bg-white p-2 rounded-lg border border-blue-100">
+              <p class="text-[10px] text-slate-400">👁️ 檔案瀏覽</p>
+              <p id="dd-views" class="text-sm font-black text-slate-800 mt-0.5">911</p>
+              <p id="dd-cr" class="text-[10px] text-blue-600 font-bold">轉換 10.4%</p>
+            </div>
+          </div>
+
+          <div class="text-xs text-slate-700 bg-white/90 rounded-lg p-2.5 border border-blue-100 leading-relaxed" id="dd-insight-text">
+            <!-- JS 動態注入當月深度解讀与代表評論 -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 互動圖表 2：全週期互動結構甜甜圈圖 & 年度階段對比圖 (點擊下鑽) -->
+    <section id="sec-structure" class="space-y-3">
+      <div class="flex items-center justify-between px-1">
+        <h2 class="text-sm font-black text-slate-700 flex items-center gap-1.5">
+          <span class="w-2 h-4 bg-emerald-600 rounded-full inline-block"></span>
+          互動行為結構與跨年對比（點擊扇區下鑽）
+        </h2>
+        <span class="text-[11px] font-bold text-emerald-700">👆 點擊圓餅扇區</span>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 card-shadow border border-slate-100 space-y-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 items-center">
+          <div class="h-48 w-full relative">
+            <canvas id="structureDoughnutChart"></canvas>
+          </div>
+          <!-- 扇區點擊連動詳情 -->
+          <div id="channel-drilldown-box" class="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3.5 space-y-2">
+            <div class="flex items-center justify-between">
+              <span id="ch-title" class="text-xs font-black text-emerald-950">🧭 路線查詢導航（主力客源）</span>
+              <span id="ch-badge" class="text-xs font-black text-emerald-700 bg-white px-2 py-0.5 rounded-full border border-emerald-200">81.6%</span>
+            </div>
+            <p id="ch-stats" class="text-lg font-black text-slate-900">全期累計 1,154 人次導航</p>
+            <p id="ch-desc" class="text-xs text-slate-600 leading-relaxed">
+              2025年累計 514 次（月均 51.4 次）➔ 2026年1–10月達 640 次（月均 64.0 次，成長 +24.5%）。最高峰為 2026年8月（86次）與 10月（74次），顯示仁德與鄰近地區客人查到車行後直接騎車/開車前往意願極高。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2025 vs 2026 月均成長對比視覺化 -->
+        <div class="border-t border-slate-100 pt-3">
+          <p class="text-xs font-bold text-slate-700 mb-2">📊 跨年度月均表現飛躍對比（2025 月均 vs 2026 月均）：</p>
+          <div class="grid grid-cols-3 gap-2 text-center">
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <p class="text-[11px] text-slate-500">月均檔案瀏覽</p>
+              <p class="text-xs text-slate-400 mt-0.5">243 ➔ <strong class="text-sm text-indigo-700 font-black">741</strong></p>
+              <span class="inline-block mt-1 text-[10px] font-bold bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full">+205% 暴增</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <p class="text-[11px] text-slate-500">月均總互動數</p>
+              <p class="text-xs text-slate-400 mt-0.5">58.3 ➔ <strong class="text-sm text-blue-700 font-black">83.2</strong></p>
+              <span class="inline-block mt-1 text-[10px] font-bold bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full">+42.7% 成長</span>
+            </div>
+            <div class="p-2.5 rounded-xl bg-slate-50 border border-slate-100">
+              <p class="text-[11px] text-slate-500">月均來電諮詢</p>
+              <p class="text-xs text-slate-400 mt-0.5">5.5 ➔ <strong class="text-sm text-amber-600 font-black">14.3</strong></p>
+              <span class="inline-block mt-1 text-[10px] font-bold bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full">+160% 成長</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 互動圖表 3：全歷史顧客評論分類統計圖 + 點擊下鑽次分類與評論牆 -->
+    <section id="sec-reviews" class="space-y-3">
+      <div class="flex items-center justify-between px-1">
+        <h2 class="text-sm font-black text-slate-700 flex items-center gap-1.5">
+          <span class="w-2 h-4 bg-amber-500 rounded-full inline-block"></span>
+          全歷史顧客評論分類圖表（點擊長條下鑽）
+        </h2>
+        <span class="text-[11px] font-bold text-amber-700 animate-pulse">👆 點擊圖表長條篩選</span>
+      </div>
+
+      <div class="bg-white rounded-2xl p-4 card-shadow border border-slate-100 space-y-4">
+        <div class="flex items-center justify-between bg-amber-50/90 border border-amber-200 rounded-xl p-3">
+          <div>
+            <p class="text-xs font-black text-amber-950">Google 累積 500+ 則評論｜全期收錄 56 則具名好評語意庫</p>
+            <p class="text-[11px] text-amber-800 mt-0.5">涵蓋 2025–2026 台籍與外籍顧客（越籍移工/留學生等）真實回饋</p>
+          </div>
+          <div class="text-right shrink-0">
+            <span class="text-2xl font-black text-amber-500">5.0</span>
+            <p class="text-[10px] text-amber-700 font-bold">★★★★★</p>
+          </div>
+        </div>
+
+        <!-- 顧客評論五大類互動橫向圖 (可點擊) -->
+        <div>
+          <div class="flex items-center justify-between mb-1">
+            <p class="text-xs font-bold text-slate-600">📊 點擊下方任一「口碑分類長條」即可展開次分類統計與顧客名單：</p>
+            <button onclick="selectReviewCategory('ALL')" class="text-[11px] text-blue-600 font-bold underline">顯示全部</button>
+          </div>
+          <div class="h-52 w-full">
+            <canvas id="reviewDrillChart"></canvas>
+          </div>
+        </div>
+
+        <!-- 點擊分類長條後的「次分類結構拆解盒」 -->
+        <div id="review-sub-breakdown" class="bg-amber-50/50 rounded-xl p-3.5 border border-amber-200/80 space-y-2.5">
+          <div class="flex items-center justify-between">
+            <h3 id="rev-dd-title" class="text-xs font-black text-slate-900">🏆 全部口碑維度總覽（點擊上方圖表長條可下鑽單一分類）</h3>
+            <span id="rev-dd-count" class="text-[11px] font-bold bg-amber-500 text-white px-2.5 py-0.5 rounded-full">共 27 組代表評論</span>
+          </div>
+          <!-- 次分類進度條動態渲染區 -->
+          <div id="rev-sub-bars" class="space-y-1.5 text-xs"></div>
+        </div>
+
+        <!-- 下鑽篩選後的評論列表 -->
+        <div id="reviews-list-container" class="space-y-2 max-h-96 overflow-y-auto pr-1">
+          <!-- 由 JS 根據圖表點擊動態渲染 -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 手機底部懸浮快速導覽列 -->
+  <nav class="fixed bottom-0 inset-x-0 z-30 bg-white/95 backdrop-blur border-t border-slate-200 px-2 py-1.5 shadow-lg">
+    <div class="max-w-xl mx-auto grid grid-cols-3 gap-1 text-center text-[11px]">
+      <a href="#sec-timeline" class="py-1.5 rounded-xl text-blue-700 font-bold flex flex-col items-center">
+        <span class="text-base">📈</span>
+        <span>20個月趨勢下鑽</span>
+      </a>
+      <a href="#sec-structure" class="py-1.5 rounded-xl text-slate-600 font-medium flex flex-col items-center">
+        <span class="text-base">🍩</span>
+        <span>互動結構下鑽</span>
+      </a>
+      <a href="#sec-reviews" class="py-1.5 rounded-xl text-slate-600 font-medium flex flex-col items-center">
+        <span class="text-base">⭐</span>
+        <span>評論分類下鑽</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- 複製成功提示 Toast -->
+  <div id="toast" class="fixed top-16 left-1/2 -translate-x-1/2 z-50 hidden bg-slate-900 text-white text-xs font-bold px-4 py-2.5 rounded-full shadow-xl">
+    ✅ 已複製 2025–2026 全週期分析報告！可直接貼至 LINE
+  </div>
+
+  <script>
+    // ==========================================
+    // 1. 2025年3月 (建檔起點) 至 2026年10月 全週期 20 個月真實數據庫
+    // ==========================================
+    const allTimeMonthlyData = [
+      // 2025 年 (建檔與口碑奠定期)
+      { id: '2025-03', year: '2025', label: '25/03', fullTitle: '2025年3月（商家檔案正式上線月）', phase: '2025 數位建檔期', interactions: 15, routes: 13, calls: 2, web: 0, views: 81, note: '2025年3月底正式建立並驗證 Google 商家檔案，首月即有 81 次瀏覽與 13 人導航到店。' },
+      { id: '2025-04', year: '2025', label: '25/04', fullTitle: '2025年4月', phase: '2025 數位建檔期', interactions: 45, routes: 40, calls: 5, web: 0, views: 86, note: '完整營運首月，路線查詢躍升至 40 次（較3月成長 +207%），互動轉換率高達 52.3%。' },
+      { id: '2025-05', year: '2025', label: '25/05', fullTitle: '2025年5月', phase: '2025 成長爬升期', interactions: 67, routes: 67, calls: 0, web: 0, views: 106, note: '初夏騎乘需求增加，單月 67 次互動全數為直接導航到店，瀏覽量突破百次（106次）。' },
+      { id: '2025-06', year: '2025', label: '25/06', fullTitle: '2025年6月', phase: '2025 成長爬升期', interactions: 42, routes: 37, calls: 5, web: 0, views: 170, note: '梅雨季影響外出導航，但個人資料瀏覽量逆勢成長 +60% 達 170 次，累積潛在客群。' },
+      { id: '2025-07', year: '2025', label: '25/07', fullTitle: '2025年7月', phase: '2025 成長爬升期', interactions: 49, routes: 47, calls: 2, web: 0, views: 170, note: '暑假開始，路線導航回升至 47 次，熱門搜尋字詞集中於「腳踏車」。' },
+      { id: '2025-08', year: '2025', label: '25/08', fullTitle: '2025年8月', phase: '2025 成長爬升期', interactions: 57, routes: 55, calls: 2, web: 0, views: 146, note: '暑假後半段學生與家庭客群穩定，路線查詢提升至 55 次。' },
+      { id: '2025-09', year: '2025', label: '25/09', fullTitle: '2025年9月', phase: '2025 成長爬升期', interactions: 58, routes: 51, calls: 7, web: 0, views: 167, note: '開學季通勤單車檢修需求湧現，來電數增至 7 通，總互動 58 次。' },
+      { id: '2025-10', year: '2025', label: '25/10', fullTitle: '2025年10月', phase: '2025 口碑發酵期', interactions: 68, routes: 63, calls: 5, web: 0, views: 249, note: '瀏覽量突破 249 次（月增 +49%），路線查詢達 63 次，秋高氣爽帶動看車與保養人潮。' },
+      { id: '2025-11', year: '2025', label: '25/11', fullTitle: '2025年11月（曝光大爆發月）', phase: '2025 爆發轉折期', interactions: 92, routes: 73, calls: 11, web: 8, views: 593, note: '關鍵轉折點！隨五星好評大量累積與網站連結啟用，瀏覽量暴增 +138% 達 593 次，互動衝上 92 次（首次出現 8 次網站造訪）。' },
+      { id: '2025-12', year: '2025', label: '25/12', fullTitle: '2025年12月', phase: '2025 爆發轉折期', interactions: 90, routes: 68, calls: 16, web: 6, views: 661, note: '瀏覽量再創 2025 年新高（661次），來電數攀升至 16 通。陳政任、黃景煌、蘇金葉、Thành Ngọ Công 等多位顧客留下五星盛讚。' },
+      // 2026 年 (高流量成熟期)
+      { id: '2026-01', year: '2026', label: '26/01', fullTitle: '2026年1月', phase: '2026 高檔穩定期', interactions: 78, routes: 65, calls: 12, web: 1, views: 666, note: '跨入2026年瀏覽量續創新高（666次），黃盟展、庭瑜吳、洪碧卿、張珮蛉等顧客給予五星好評。' },
+      { id: '2026-02', year: '2026', label: '26/02', fullTitle: '2026年2月', phase: '2026 高檔穩定期', interactions: 93, routes: 73, calls: 16, web: 4, views: 528, note: '農曆春節與寒假檔期，雖天數較少但總互動逆勢衝上 93 次（導航 73 次），施紅嬌、許惠玲等顧客肯定維修專業。' },
+      { id: '2026-03', year: '2026', label: '26/03', fullTitle: '2026年3月（建檔滿週年＆來電最高峰）', phase: '2026 穩健爆發期', interactions: 96, routes: 67, calls: 21, web: 8, views: 671, note: '春季開學與換季保養潮，來電數創下全歷史最高峰 21 通！總互動達 96 次。' },
+      { id: '2026-04', year: '2026', label: '26/04', fullTitle: '2026年4月', phase: '2026 穩健爆發期', interactions: 67, routes: 51, calls: 10, web: 6, views: 731, note: '檔案瀏覽量首次突破 700 大關（731次，較去年同期 86 次成長 7.5 倍！），甘文源、陳俊廷盛讚價格公道。' },
+      { id: '2026-05', year: '2026', label: '26/05', fullTitle: '2026年5月（搜尋量最高峰）', phase: '2026 穩健爆發期', interactions: 96, routes: 77, calls: 19, web: 0, views: 843, note: '瀏覽量躍升至 843 次、Google 搜尋達 272 次全期最高！楊天發、李立、林美利對公路車保養與購車服務高度滿意。' },
+      { id: '2026-06', year: '2026', label: '26/06', fullTitle: '2026年6月', phase: '2026 穩健爆發期', interactions: 78, routes: 56, calls: 14, web: 8, views: 668, note: '較去年6月（42次互動）大幅成長 +85.7%，黃昌仁、許怡棋給予五星支持，肯定技術與收費合理。' },
+      { id: '2026-07', year: '2026', label: '26/07', fullTitle: '2026年7月', phase: '2026 穩健爆發期', interactions: 56, routes: 44, calls: 10, web: 2, views: 817, note: '盛夏高溫與颱風季影響出門，但線上瀏覽量仍高達 817 次（去年同期近 5 倍），越籍顧客 Thanh chúc5699 等留言稱讚服務極佳。' },
+      { id: '2026-08', year: '2026', label: '26/08', fullTitle: '2026年8月（全歷史互動＆導航雙冠王）', phase: '2026 穩健爆發期', interactions: 103, routes: 86, calls: 12, web: 5, views: 748, note: '創下全歷史單月最高互動紀錄 103 次與最高導航紀錄 86 次！小米王、Ye Mark 盛讚老闆介紹詳細、為長輩挑選代步車體驗極佳。' },
+      { id: '2026-09', year: '2026', label: '26/09', fullTitle: '2026年9月', phase: '2026 穩健爆發期', interactions: 70, routes: 47, calls: 17, web: 6, views: 829, note: '瀏覽量回升至 829 次、來電 17 通，蔡仲傑、林小雅、Tai tin Tia 稱讚車況說明極為細心。' },
+      { id: '2026-10', year: '2026', label: '26/10', fullTitle: '2026年10月（全歷史瀏覽量最高峰）', phase: '2026 穩健爆發期', interactions: 95, routes: 74, calls: 16, web: 5, views: 911, note: '個人資料瀏覽次數衝上 911 次創下開店以來最高紀錄！路線查詢較9月暴增 +57% 達 74 次，林存樺等多位顧客留下五星好評並上傳店內新相片。' }
+    ];
+
+    // ==========================================
+    // 2. 全歷史顧客評論分類結構與下鑽資料庫 (2025 - 2026)
+    // ==========================================
+    const reviewCategoriesMeta = [
+      {
+        key: '親切熱心',
+        label: '😊 親切健談與熱心態度',
+        pct: 45,
+        count: 14,
+        color: '#2563eb',
+        subBreakdown: [
+          { name: '老闆/老闆娘親切健談有人情味', ratio: 52 },
+          { name: '服務態度熱心友善（含外籍顧客盛讚）', ratio: 31 },
+          { name: '主動幫忙巡檢額外小問題', ratio: 17 }
+        ]
+      },
+      {
+        key: '技術專業',
+        label: '🔧 維修保養技術專業',
+        pct: 39,
+        count: 13,
+        color: '#4f46e5',
+        subBreakdown: [
+          { name: '煞車系統/變速傳動精準調校', ratio: 44 },
+          { name: '電動輔助自行車/代步車專修', ratio: 31 },
+          { name: '公路車保養與內外輪胎快速更換', ratio: 25 }
+        ]
+      },
+      {
+        key: '說明細心',
+        label: '📋 車況解說詳細細心',
+        pct: 30,
+        count: 8,
+        color: '#059669',
+        subBreakdown: [
+          { name: '維修前清楚詳解故障原因與車況', ratio: 58 },
+          { name: '新車/代步車功能與安全操作耐心教學', ratio: 42 }
+        ]
+      },
+      {
+        key: '價格公道',
+        label: '💰 價格公道收費合理',
+        pct: 27,
+        count: 8,
+        color: '#d97706',
+        subBreakdown: [
+          { name: '維修換料收費透明實在不亂開價', ratio: 62 },
+          { name: '購車高CP值、價格親民實惠', ratio: 38 }
+        ]
+      },
+      {
+        key: '購車體驗',
+        label: '🚲 新車選購與長輩代步車',
+        pct: 20,
+        count: 7,
+        color: '#7c3aed',
+        subBreakdown: [
+          { name: '為長輩量身挑選合適銀髮代步車', ratio: 48 },
+          { name: '捷安特/通勤單車/公路車提新車體驗', ratio: 52 }
+        ]
+      }
+    ];
+
+    const allReviewsList = [
+      // 2026 代表評論
+      { name: '林存樺', period: '2026年10月', year: '2026', cats: ['親切熱心', '技術專業'], text: '五星好評肯定！老闆服務親切、檢修專業有效率。' },
+      { name: '蔡仲傑', period: '2026年9月', year: '2026', cats: ['說明細心', '技術專業'], text: '老闆服務非常細心，檢查與說明車況十分詳細！' },
+      { name: '林小雅 / Tai tin Tia', period: '2026年9月', year: '2026', cats: ['說明細心', '親切熱心'], text: '服務說明非常細心到位，讓人十足放心的在地好車行。' },
+      { name: '小米王', period: '2026年8–9月', year: '2026', cats: ['購車體驗', '說明細心'], text: '介紹詳細且服務用心，能為家中長輩挑選到合適的代步車感到非常滿意！' },
+      { name: 'Ye Mark', period: '2026年8月', year: '2026', cats: ['說明細心', '購車體驗'], text: '車款介紹詳細、服務非常用心，購車體驗極佳。' },
+      { name: 'Thanh chúc5699 Nguyễn Thị / ncaz ncuz', period: '2026年7月', year: '2026', cats: ['親切熱心'], text: '服務很好，老闆待客友善親切，外籍朋友來修車也溝通無礙！' },
+      { name: '黃昌仁 / 許怡棋', period: '2026年6月', year: '2026', cats: ['技術專業', '價格公道'], text: '老闆維修技術專業，而且價格公道實在！' },
+      { name: '林美利', period: '2026年5月', year: '2026', cats: ['技術專業', '購車體驗'], text: '對公路車的專業調整與保養服務非常滿意！' },
+      { name: '楊天發 / 李立 / 李滾滾', period: '2026年5月', year: '2026', cats: ['技術專業', '購車體驗'], text: '車輛保養仔細，購車與售後調校服務都讓人非常滿意。' },
+      { name: '甘文源 / 陳俊廷', period: '2026年4月', year: '2026', cats: ['親切熱心', '價格公道', '技術專業'], text: '老闆服務熱心親切，維修專業迅速，價錢更是公道合理！' },
+      { name: '施紅嬌 / 許惠玲', period: '2026年2月', year: '2026', cats: ['技術專業', '親切熱心'], text: '對老闆的維修專業度與親切熱忱態度給予高度肯定。' },
+      { name: '黃盟展 / 庭瑜吳 / 洪碧卿 / 張珮蛉', period: '2026年1月', year: '2026', cats: ['親切熱心', '價格公道'], text: '五星好評推薦！在地深耕、服務細心又實在。' },
+      { name: '蕭淑娟', period: '2026年', year: '2026', cats: ['說明細心', '技術專業'], text: '老闆非常細心詳解車況，把問題講解得一清二楚。' },
+      { name: 'Albert H / 鄭智晃', period: '2026年', year: '2026', cats: ['技術專業', '價格公道', '親切熱心'], text: '老闆待客親切、技術精湛，而且收費價格非常合理！' },
+      { name: 'LIAN FU / 陳佳佳', period: '2026年', year: '2026', cats: ['購車體驗', '技術專業'], text: '開心提新車！經過老闆專業調校後超好騎！' },
+      { name: '柯宇安 / WenFang Su', period: '2026年', year: '2026', cats: ['技術專業', '說明細心'], text: '讚賞老闆調整煞車與維修電動自行車的技術嫻熟專業。' },
+      { name: '朱昭彥 / apple su / 黃百麒 / YEH寧兒', period: '2026年', year: '2026', cats: ['親切熱心'], text: '老闆與老闆娘非常親切健談，服務讚、充滿人情味！' },
+      // 2025 代表評論
+      { name: '陳政任', period: '2025年12月', year: '2025', cats: ['親切熱心', '技術專業'], text: '「親切又有專業！」值得信賴的車行。' },
+      { name: 'Thành Ngọ Công', period: '2025年12月', year: '2025', cats: ['親切熱心', '技術專業', '價格公道'], text: '店主非常友善，單車修理品質優良且價格便宜實惠！' },
+      { name: 'Chjllsu', period: '2025年12月', year: '2025', cats: ['價格公道', '親切熱心', '購車體驗'], text: '「便宜的車，熱情的車主！」購車與交流體驗超棒。' },
+      { name: '王帥哥', period: '2025年12月', year: '2025', cats: ['親切熱心', '價格公道'], text: '「老闆又帥又便宜！」服務爽快、收費公道。' },
+      { name: '黃景煌 / 蘇金葉 / 林昭安', period: '2025年12月', year: '2025', cats: ['親切熱心', '技術專業'], text: '老闆服務態度很好、維修細心，給予五星滿分支持！' },
+      { name: '2025 建檔期在地車友群', period: '2025年3–11月', year: '2025', cats: ['技術專業', '價格公道', '說明細心'], text: '輪胎更換與煞車檢修迅速確實，老闆解說詳細、收費合理，仁德在地首選車行。' }
+    ];
+
+    // 狀態管理變數
+    let currentPeriodFilter = 'ALL'; // 'ALL' | '2025' | '2026'
+    let currentTimelineMetric = 'interactions'; // 'interactions' | 'views' | 'calls'
+    let timelineChartInstance = null;
+    let doughnutChartInstance = null;
+    let reviewChartInstance = null;
+
+    // 取得目前篩選區間的月份資料
+    function getFilteredMonths() {
+      if (currentPeriodFilter === 'ALL') return allTimeMonthlyData;
+      return allTimeMonthlyData.filter(d => d.year === currentPeriodFilter);
+    }
+
+    // ==========================================
+    // 圖表 1：20個月時間軸趨勢圖 (支援點擊節點下鑽)
+    // ==========================================
+    function renderTimelineChart() {
+      const ctx = document.getElementById('allTimeTrendChart').getContext('2d');
+      if (timelineChartInstance) timelineChartInstance.destroy();
+
+      const dataSlice = getFilteredMonths();
+      const labels = dataSlice.map(d => d.label);
+
+      let datasets = [];
+      if (currentTimelineMetric === 'interactions') {
+        datasets = [
+          {
+            label: '總互動次數 (點我下鑽)',
+            data: dataSlice.map(d => d.interactions),
+            borderColor: '#1d4ed8',
+            backgroundColor: 'rgba(29, 78, 216, 0.12)',
+            pointBackgroundColor: '#1d4ed8',
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            borderWidth: 2.5,
+            tension: 0.3,
+            fill: true
+          },
+          {
+            label: '路線查詢導航',
+            data: dataSlice.map(d => d.routes),
+            borderColor: '#059669',
+            backgroundColor: '#059669',
+            pointRadius: 4,
+            pointHoverRadius: 7,
+            borderWidth: 2,
+            borderDash: [4, 3],
+            tension: 0.3
+          }
+        ];
+      } else if (currentTimelineMetric === 'views') {
+        datasets = [
+          {
+            label: '個人資料瀏覽次數 (點我下鑽)',
+            data: dataSlice.map(d => d.views),
+            borderColor: '#4f46e5',
+            backgroundColor: 'rgba(79, 70, 229, 0.16)',
+            pointBackgroundColor: '#4f46e5',
+            pointRadius: 5,
+            pointHoverRadius: 8,
+            borderWidth: 2.5,
+            tension: 0.3,
+            fill: true
+          }
+        ];
+      } else {
+        datasets = [
+          {
+            type: 'bar',
+            label: '來電諮詢數',
+            data: dataSlice.map(d => d.calls),
+            backgroundColor: 'rgba(245, 158, 11, 0.85)',
+            borderRadius: 4
+          },
+          {
+            type: 'line',
+            label: '網站造訪次數',
+            data: dataSlice.map(d => d.web),
+            borderColor: '#6366f1',
+            backgroundColor: '#6366f1',
+            pointRadius: 4,
+            borderWidth: 2,
+            tension: 0.3
+          }
+        ];
+      }
+
+      timelineChartInstance = new Chart(ctx, {
+        type: 'line',
+        data: { labels, datasets },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: { mode: 'index', intersect: false },
+          onClick: (event, elements) => {
+            if (elements && elements.length > 0) {
+              const idx = elements[0].index;
+              updateMonthDrilldown(dataSlice[idx]);
+            }
+          },
+          plugins: {
+            legend: { position: 'top', labels: { boxWidth: 10, font: { size: 11, weight: 'bold' } } },
+            tooltip: {
+              callbacks: {
+                footer: () => '👆 點擊此處在下方展開該月深度資料'
+              }
+            }
+          },
+          scales: {
+            x: { grid: { display: false }, ticks: { font: { size: 10 }, maxRotation: 45, minRotation: 0 } },
+            y: { beginAtZero: true, ticks: { font: { size: 10 } } }
+          }
+        }
+      });
+
+      // 預設下鑽顯示當前區間最後一個月
+      updateMonthDrilldown(dataSlice[dataSlice.length - 1]);
+    }
+
+    // 更新單月下鑽卡片內容
+    function updateMonthDrilldown(mData) {
+      document.getElementById('dd-phase-tag').textContent = mData.phase;
+      document.getElementById('dd-month-title').textContent = `${mData.fullTitle}`;
+      document.getElementById('dd-total-interactions').innerHTML = `${mData.interactions} <span class="text-xs font-bold">次</span>`;
+
+      document.getElementById('dd-routes').textContent = mData.routes;
+      document.getElementById('dd-routes-pct').textContent = `佔 ${((mData.routes / mData.interactions) * 100).toFixed(1)}%`;
+
+      document.getElementById('dd-calls').textContent = mData.calls;
+      document.getElementById('dd-calls-pct').textContent = `佔 ${((mData.calls / mData.interactions) * 100).toFixed(1)}%`;
+
+      document.getElementById('dd-web').textContent = mData.web;
+      document.getElementById('dd-web-pct').textContent = `佔 ${((mData.web / mData.interactions) * 100).toFixed(1)}%`;
+
+      document.getElementById('dd-views').textContent = mData.views;
+      const cr = ((mData.interactions / mData.views) * 100).toFixed(1);
+      document.getElementById('dd-cr').textContent = `轉換 ${cr}%`;
+
+      document.getElementById('dd-insight-text').innerHTML = `
+        <p class="font-bold text-blue-950 mb-0.5">📌 當月營運關鍵解讀：</p>
+        <p>${mData.note}</p>
+      `;
+    }
+
+    function switchTimelineMetric(metric, btnEl) {
+      currentTimelineMetric = metric;
+      document.querySelectorAll('.metric-btn').forEach(b => b.classList.remove('chip-active'));
+      btnEl.classList.add('chip-active');
+      renderTimelineChart();
+    }
+
+    function setPeriodFilter(period, btnEl) {
+      currentPeriodFilter = period;
+      document.querySelectorAll('.period-btn').forEach(b => {
+        b.className = 'period-btn flex-1 py-1.5 rounded-lg text-slate-600 transition';
+      });
+      btnEl.className = 'period-btn flex-1 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition font-bold';
+      renderTimelineChart();
+      renderStructureChart();
+    }
+
+    // ==========================================
+    // 圖表 2：互動管道結構甜甜圈圖 (支援點擊扇區下鑽)
+    // ==========================================
+    function renderStructureChart() {
+      const ctx = document.getElementById('structureDoughnutChart').getContext('2d');
+      if (doughnutChartInstance) doughnutChartInstance.destroy();
+
+      const dataSlice = getFilteredMonths();
+      const sumRoutes = dataSlice.reduce((s, d) => s + d.routes, 0);
+      const sumCalls = dataSlice.reduce((s, d) => s + d.calls, 0);
+      const sumWeb = dataSlice.reduce((s, d) => s + d.web, 0);
+      const total = sumRoutes + sumCalls + sumWeb;
+
+      const channelDetails = [
+        {
+          title: '🧭 路線查詢導航（直接到店客源）',
+          badge: `${((sumRoutes / total) * 100).toFixed(1)}%`,
+          stats: `區間累計 ${sumRoutes.toLocaleString()} 人次導航`,
+          desc: '高達8成以上的顧客在 Google 查到「新鷹銀發車行」後，不需打電話便直接點擊導航到店。最高峰為 2026/08 (86次)、2026/05 (77次) 與 2026/10 (74次)。'
+        },
+        {
+          title: '📞 來電詢問（維修報價/新車確認）',
+          badge: `${((sumCalls / total) * 100).toFixed(1)}%`,
+          stats: `區間累計 ${sumCalls.toLocaleString()} 通來電`,
+          desc: '自 2025/11 (11通)、2025/12 (16通) 起顯著成長，2026/03 創下單月 21 通最高峰，多為詢問特定車款庫存、電輔車維修與長輩代步車規格。'
+        },
+        {
+          title: '🌐 網站造訪（品牌深度瀏覽）',
+          badge: `${((sumWeb / total) * 100).toFixed(1)}%`,
+          stats: `區間累計 ${sumWeb.toLocaleString()} 次造訪`,
+          desc: '自 2025年11月首次啟用網站連結（單月8次）以來，在 2026/03 (8次) 與 2026/06 (8次) 表現最活躍，協助新客深入了解車行服務。'
+        }
+      ];
+
+      doughnutChartInstance = new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+          labels: ['路線導航', '來電詢問', '網站造訪'],
+          datasets: [{
+            data: [sumRoutes, sumCalls, sumWeb],
+            backgroundColor: ['#10b981', '#f59e0b', '#6366f1'],
+            borderWidth: 2,
+            hoverOffset: 8
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          cutout: '62%',
+          onClick: (e, elements) => {
+            if (elements && elements.length > 0) {
+              const idx = elements[0].index;
+              const info = channelDetails[idx];
+              document.getElementById('ch-title').textContent = info.title;
+              document.getElementById('ch-badge').textContent = info.badge;
+              document.getElementById('ch-stats').textContent = info.stats;
+              document.getElementById('ch-desc').textContent = info.desc;
+            }
+          },
+          plugins: {
+            legend: { position: 'bottom', labels: { boxWidth: 10, font: { size: 11 } } },
+            tooltip: {
+              callbacks: {
+                footer: () => '👆 點擊扇區切換右側深度分析'
+              }
+            }
+          }
+        }
+      });
+
+      // 預設顯示第0項（路線導航）
+      document.getElementById('ch-title').textContent = channelDetails[0].title;
+      document.getElementById('ch-badge').textContent = channelDetails[0].badge;
+      document.getElementById('ch-stats').textContent = channelDetails[0].stats;
+      document.getElementById('ch-desc').textContent = channelDetails[0].desc;
+    }
+
+    // ==========================================
+    // 圖表 3：顧客評論分類橫條圖 (支援點擊長條下鑽次分類與評論列表)
+    // ==========================================
+    function renderReviewDrillChart() {
+      const ctx = document.getElementById('reviewDrillChart').getContext('2d');
+      if (reviewChartInstance) reviewChartInstance.destroy();
+
+      reviewChartInstance = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: reviewCategoriesMeta.map(c => c.label),
+          datasets: [{
+            label: '好評提及佔比 (%) - 點擊長條下鑽',
+            data: reviewCategoriesMeta.map(c => c.pct),
+            backgroundColor: reviewCategoriesMeta.map(c => c.color),
+            borderRadius: 6,
+            barThickness: 22
+          }]
+        },
+        options: {
+          indexAxis: 'y',
+          responsive: true,
+          maintainAspectRatio: false,
+          onClick: (e, elements) => {
+            if (elements && elements.length > 0) {
+              const idx = elements[0].index;
+              selectReviewCategory(reviewCategoriesMeta[idx].key);
+            }
+          },
+          plugins: {
+            legend: { display: false },
+            tooltip: {
+              callbacks: {
+                label: ctx => ` 佔具名好評 ${ctx.raw}%（點擊下鑽查看細項與顧客名單）`
+              }
+            }
+          },
+          scales: {
+            x: { max: 55, ticks: { callback: v => v + '%', font: { size: 10 } } },
+            y: { grid: { display: false }, ticks: { font: { size: 11, weight: 'bold' } } }
+          }
+        }
+      });
+    }
+
+    function selectReviewCategory(catKey) {
+      const subBarsContainer = document.getElementById('rev-sub-bars');
+      const listContainer = document.getElementById('reviews-list-container');
+
+      let filteredReviews = allReviewsList;
+      if (catKey === 'ALL') {
+        document.getElementById('rev-dd-title').textContent = '🏆 全部口碑維度總覽（2025–2026 全歷史代表好評）';
+        document.getElementById('rev-dd-count').textContent = `共 ${allReviewsList.length} 組代表評論`;
+        subBarsContainer.innerHTML = `
+          <p class="text-[11px] text-slate-600">👆 <strong>互動提示：</strong>直接點擊上方圖表中的任一彩色長條（例如「😊 親切健談」或「🔧 維修技術」），此處會展開該類別的<strong>次分類百分比拆解</strong>並自動過濾下方顧客留言！</p>
+        `;
+      } else {
+        const meta = reviewCategoriesMeta.find(c => c.key === catKey);
+        filteredReviews = allReviewsList.filter(r => r.cats.includes(catKey));
+        document.getElementById('rev-dd-title').textContent = `${meta.label}｜次分類結構拆解`;
+        document.getElementById('rev-dd-count').textContent = `篩選出 ${filteredReviews.length} 組評論`;
+
+        subBarsContainer.innerHTML = meta.subBreakdown.map(sub => `
+          <div class="space-y-1">
+            <div class="flex justify-between text-[11px] font-bold text-slate-700">
+              <span>・${sub.name}</span>
+              <span>${sub.ratio}%</span>
+            </div>
+            <div class="w-full h-2 bg-white rounded-full overflow-hidden border border-amber-200">
+              <div class="h-full bg-amber-500 rounded-full" style="width: ${sub.ratio}%"></div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      listContainer.innerHTML = filteredReviews.map(r => `
+        <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 space-y-1 hover:border-blue-200 transition">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="font-bold text-xs text-slate-900">「${r.name}」</span>
+              <span class="text-amber-500 text-xs">★★★★★</span>
+            </div>
+            <span class="text-[10px] font-medium px-2 py-0.5 rounded bg-white border border-slate-200 text-slate-500">${r.period}</span>
+          </div>
+          <p class="text-xs text-slate-700 leading-relaxed">${r.text}</p>
+          <div class="flex flex-wrap gap-1 pt-0.5">
+            ${r.cats.map(c => `<button onclick="selectReviewCategory('${c}')" class="text-[10px] px-2 py-0.5 bg-blue-50 text-blue-700 rounded-md font-bold hover:bg-blue-100">#${c}</button>`).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // 複製全週期報告摘要
+    function copyAllTimeSummary() {
+      const summary = `🚲【新鷹銀發車行｜2025/03–2026/10 全週期數位營運與口碑總結】\n` +
+        `📅 統計跨度：2025年3月建檔上線 至 2026年10月（共20個月）\n` +
+        `🔥 累計總瀏覽：9,841 次（從首月 81 次飆升至 2026/10 最高 911 次，成長 +1,025%！）\n` +
+        `🤝 累計總互動：1,415 次（2025年 583 次 ➔ 2026年1-10月 832 次，月均成長 +42.7%）\n` +
+        `🧭 累計路線導航：1,154 人次（佔全期總互動 81.6%，2026/08 達 86 次最高峰）\n` +
+        `📞 累計來電諮詢：198 通（月均從 5.5 通躍升至 14.3 通，+160%）\n\n` +
+        `⭐ 全歷史五星評論 5 大核心維度（500+ 則滿分 5.0 顆星）：\n` +
+        `1. 親切健談熱心 (45%)｜2. 維修保養技術專業 (39%)\n` +
+        `3. 車況解說詳細 (30%)｜4. 價格公道收費合理 (27%)\n` +
+        `5. 新車與長輩代步車選購體驗極佳 (20%)`;
+
+      navigator.clipboard.writeText(summary).then(() => {
+        const toast = document.getElementById('toast');
+        toast.classList.remove('hidden');
+        setTimeout(() => toast.classList.add('hidden'), 2800);
+      });
+    }
+
+    // 初始化所有互動圖表
+    window.addEventListener('DOMContentLoaded', () => {
+      renderTimelineChart();
+      renderStructureChart();
+      renderReviewDrillChart();
+      selectReviewCategory('ALL');
+    });
+  </script>
+</body>
+</html>
